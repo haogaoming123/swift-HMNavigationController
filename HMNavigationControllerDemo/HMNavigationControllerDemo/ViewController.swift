@@ -12,7 +12,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.view.backgroundColor = UIColor.white
+        
+        let btn = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 30))
+        btn.backgroundColor = UIColor.red
+        btn.addTarget(self, action: #selector(click), for: .touchUpInside)
+        self.view.addSubview(btn)
+    }
+    
+    @objc func click() {
+        self.navigationController?.pushViewController(TwoViewController(), animated: true)
     }
 
     override func didReceiveMemoryWarning() {

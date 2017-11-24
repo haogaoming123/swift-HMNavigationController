@@ -24,15 +24,20 @@ enum NavMovingStateEnumes: Int {
     case decelerating   //滑动减速
 }
 
+private var disableDragBackKey = "_disableDragBack"
 extension UIViewController
 {
     /// 是否开启全屏滑动返回
     open var disableDragBack: Bool {
         get{
-            return objc_getAssociatedObject(self, "_disableDragBack") as! Bool
+            if let result = objc_getAssociatedObject(self, &disableDragBackKey) as? Bool {
+                return result
+            }else {
+                return false
+            }
         }
         set{
-            objc_setAssociatedObject(self, "_disableDragBack", newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+            objc_setAssociatedObject(self, &disableDragBackKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
         }
     }
 }
@@ -66,12 +71,10 @@ class BaseNavigationController: UINavigationController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if disableDragBack {
-            //为导航器添加拖拽手势
-            let pan = UIPanGestureRecognizer(target: self, action: #selector(paningGestureReceive(_:)))
-            pan.delegate = self
-            self.view.addGestureRecognizer(pan)
-        }
+        //为导航器添加拖拽手势
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(paningGestureReceive(_:)))
+        pan.delegate = self
+        self.view.addGestureRecognizer(pan)
     }
 
     override func didReceiveMemoryWarning() {
