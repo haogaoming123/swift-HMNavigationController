@@ -13,7 +13,7 @@ fileprivate let KeyWindow = UIApplication.shared.keyWindow
 /// width常量
 fileprivate let screenWidth = UIScreen.main.bounds.size.width
 /// 最小移动距离
-fileprivate let moveMinX = (0.3 * screenWidth)
+fileprivate let moveMinX = (0.1 * screenWidth)
 
 /// 全屏滑动时的状态
 enum NavMovingStateEnumes: Int {
@@ -45,7 +45,7 @@ extension UIViewController
 class BaseNavigationController: UINavigationController
 {
     /// 存储截屏图片的字典
-    lazy var screenShotsDict: [String:UIImage] = [:]
+    lazy var screenShotsDict: [NSString:UIImage] = [:]
     
     /// 移动的状态
     lazy var movingState: NavMovingStateEnumes = .stanby
@@ -61,7 +61,7 @@ class BaseNavigationController: UINavigationController
     lazy var backgroundView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         view.backgroundColor = UIColor.black
-        self.view.addSubview(view)
+        self.view.superview?.insertSubview(view, belowSubview: self.view)
         //添加Shotview
         self.lastScreenShotView.frame = view.bounds
         view.addSubview(self.lastScreenShotView)
@@ -129,7 +129,7 @@ extension BaseNavigationController
         }
         super.setViewControllers(viewControllers, animated: animated)
         
-        var newDic: [String:UIImage] = [:]
+        var newDic: [NSString:UIImage] = [:]
         for vc in viewControllers {
             let obj = screenShotsDict[pointer(vc)]
             if obj != nil {
@@ -338,8 +338,11 @@ extension BaseNavigationController
         return img!
     }
     
-    func pointer(_ objet: UIViewController?) -> String {
-       return ""
+    func pointer(_ objet: UIViewController?) -> NSString {
+        if let vc = objet {
+            return NSString(format: "%p", vc)
+        }
+        return "null"
     }
     
     /// 获取前一个页面的截屏

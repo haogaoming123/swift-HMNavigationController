@@ -12,7 +12,11 @@ class TwoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.orange
+        
+        let webview = UIWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        webview.loadRequest(URLRequest(url: URL(string: "https://www.baidu.com")!))
+        self.view.addSubview(webview)
     }
 
     override func didReceiveMemoryWarning() {
