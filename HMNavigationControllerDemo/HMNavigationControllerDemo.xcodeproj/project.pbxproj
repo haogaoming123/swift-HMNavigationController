@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE15B4B01FC7C065008EF215 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15B4AF1FC7C065008EF215 /* BaseNavigationController.swift */; };
 		AE99399C1FC678EC008595FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE99399B1FC678EC008595FF /* AppDelegate.swift */; };
 		AE99399E1FC678EC008595FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE99399D1FC678EC008595FF /* ViewController.swift */; };
 		AE9939A11FC678EC008595FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE99399F1FC678EC008595FF /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE15B4AF1FC7C065008EF215 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		AE9939981FC678EC008595FF /* HMNavigationControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMNavigationControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE99399B1FC678EC008595FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE99399D1FC678EC008595FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				AE99399B1FC678EC008595FF /* AppDelegate.swift */,
+				AE15B4AF1FC7C065008EF215 /* BaseNavigationController.swift */,
 				AE99399D1FC678EC008595FF /* ViewController.swift */,
 				AE99399F1FC678EC008595FF /* Main.storyboard */,
 				AE9939A21FC678EC008595FF /* Assets.xcassets */,
@@ -138,6 +141,7 @@
 			files = (
 				AE99399E1FC678EC008595FF /* ViewController.swift in Sources */,
 				AE99399C1FC678EC008595FF /* AppDelegate.swift in Sources */,
+				AE15B4B01FC7C065008EF215 /* BaseNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
