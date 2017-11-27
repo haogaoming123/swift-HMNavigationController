@@ -89,6 +89,10 @@ extension BaseNavigationController
         if viewControllers.count > 0 {
             screenShotsDict[pointer(topViewController)] = capture()
         }
+        //进入第二页，自动隐藏tabbar
+        if self.viewControllers.count == 1 {
+            viewController.hidesBottomBarWhenPushed = true
+        }
         super.pushViewController(viewController, animated: animated)
     }
     
