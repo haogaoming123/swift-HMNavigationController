@@ -50,21 +50,13 @@ class BaseNavigationController: UINavigationController
     /// 移动的状态
     lazy var movingState: NavMovingStateEnumes = .stanby
     
+    /// 显示上一个页面的截屏黑色背景
+    fileprivate var backgroundView: UIView?
+    
     /// 显示上一个页面的截屏
     lazy var lastScreenShotView: UIImageView = {
         let view = UIImageView()
         view.backgroundColor = UIColor.white
-        return view
-    }()
-    
-    /// 显示上一个页面的截屏黑色背景
-    lazy var backgroundView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        view.backgroundColor = UIColor.black
-        self.view.superview?.insertSubview(view, belowSubview: self.view)
-        //添加Shotview
-        self.lastScreenShotView.frame = view.bounds
-        view.addSubview(self.lastScreenShotView)
         return view
     }()
     
@@ -76,9 +68,31 @@ class BaseNavigationController: UINavigationController
         pan.delegate = self
         self.view.addGestureRecognizer(pan)
     }
-
+    
+    /// 获取backgroundView
+    ///
+    /// - Returns: 返回view
+    func getBackgroundView() -> UIView {
+        if backgroundView == nil {
+            backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+            backgroundView?.backgroundColor = UIColor.black
+            //添加Shotview
+            self.lastScreenShotView.frame = view.bounds
+            backgroundView?.addSubview(self.lastScreenShotView)
+        }
+        if backgroundView?.superview == nil {
+            self.view.superview?.insertSubview(backgroundView!, belowSubview: self.view)
+        }
+        return backgroundView!
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    deinit {
+        screenShotsDict.removeAll()
+        backgroundView?.removeFromSuperview()
     }
 }
 
@@ -98,7 +112,7 @@ extension BaseNavigationController
     
     override func popViewController(animated: Bool) -> UIViewController? {
         let poppedVC = super.popViewController(animated: animated)
-        screenShotsDict.removeValue(forKey: pointer(poppedVC))
+        screenShotsDict.removeValue(forKey: pointer(topViewController))
         return poppedVC
     }
     
@@ -151,14 +165,15 @@ extension BaseNavigationController: UIGestureRecognizerDelegate
     ///
     /// - Parameter gesture: 手势
     @objc func paningGestureReceive(_ gesture: UIPanGestureRecognizer) {
-        if self.viewControllers.count < 1 || self.disableDragBack == false {
+        if !(!self.disableDragBack && self.viewControllers.count > 1) {
+            //只有一个controller和没有开启滑动返回，则直接返回
             return
         }
         if gesture.state == .began {
             if movingState == .stanby {
                 //默认状态下
                 movingState = .dragBegan
-                backgroundView.isHidden = false
+                getBackgroundView().isHidden = false
                 lastScreenShotView.image = lastScreenShot()
             }
         }else if gesture.state == .ended || gesture.state == .cancelled {
@@ -180,7 +195,7 @@ extension BaseNavigationController: UIGestureRecognizerDelegate
         if touch.location(in: nil).x >= screenWidth * 2 / 3 {
             return false
         }
-        return (self.viewControllers.count > 1 && self.disableDragBack)
+        return !self.disableDragBack && self.viewControllers.count > 1
     }
     
     //适配cell左滑删除的手势冲突
@@ -248,7 +263,7 @@ extension BaseNavigationController
                        options: .curveEaseOut, animations: {
                         self.moveViewWithX(pop ? screenWidth : CGFloat(0))
         }) { (_) in
-            self.backgroundView.isHidden = true
+            self.getBackgroundView().isHidden = true
             if pop {
                 _ = self.popViewController(animated: false)
             }

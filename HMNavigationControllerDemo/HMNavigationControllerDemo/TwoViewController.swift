@@ -14,9 +14,15 @@ class TwoViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.orange
         
-        let webview = UIWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        webview.loadRequest(URLRequest(url: URL(string: "https://www.baidu.com")!))
-        self.view.addSubview(webview)
+        let imageview = UIImageView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
+        if let navigation = self.navigationController as? BaseNavigationController {
+            imageview.image = navigation.lastScreenShot()
+        }
+        self.view.addSubview(imageview)
+        
+//        let webview = UIWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+//        webview.loadRequest(URLRequest(url: URL(string: "https://www.baidu.com")!))
+//        self.view.addSubview(webview)
     }
 
     override func didReceiveMemoryWarning() {

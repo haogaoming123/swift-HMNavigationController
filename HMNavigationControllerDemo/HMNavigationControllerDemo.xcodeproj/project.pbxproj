@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE15B4B01FC7C065008EF215 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15B4AF1FC7C065008EF215 /* BaseNavigationController.swift */; };
 		AE15B4B21FC81B1A008EF215 /* TwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15B4B11FC81B1A008EF215 /* TwoViewController.swift */; };
+		AE4037121FCBFC46003C59D0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4037111FCBFC46003C59D0 /* TabBarController.swift */; };
+		AE4037421FCC1B14003C59D0 /* ATNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4037411FCC1B14003C59D0 /* ATNavigationController.m */; };
+		AE4037461FCC1CEA003C59D0 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4037451FCC1CEA003C59D0 /* BaseNavigationController.swift */; };
 		AE99399C1FC678EC008595FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE99399B1FC678EC008595FF /* AppDelegate.swift */; };
 		AE99399E1FC678EC008595FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE99399D1FC678EC008595FF /* ViewController.swift */; };
 		AE9939A11FC678EC008595FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE99399F1FC678EC008595FF /* Main.storyboard */; };
@@ -17,8 +19,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AE15B4AF1FC7C065008EF215 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		AE15B4B11FC81B1A008EF215 /* TwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoViewController.swift; sourceTree = "<group>"; };
+		AE4037111FCBFC46003C59D0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		AE4037401FCC1B14003C59D0 /* ATNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATNavigationController.h; sourceTree = "<group>"; };
+		AE4037411FCC1B14003C59D0 /* ATNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATNavigationController.m; sourceTree = "<group>"; };
+		AE4037441FCC1C30003C59D0 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		AE4037451FCC1CEA003C59D0 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		AE9939981FC678EC008595FF /* HMNavigationControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMNavigationControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE99399B1FC678EC008595FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE99399D1FC678EC008595FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE40373F1FCC1B14003C59D0 /* ATNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				AE4037401FCC1B14003C59D0 /* ATNavigationController.h */,
+				AE4037411FCC1B14003C59D0 /* ATNavigationController.m */,
+			);
+			path = ATNavigationController;
+			sourceTree = "<group>";
+		};
 		AE99398F1FC678EC008595FF = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +73,17 @@
 		AE99399A1FC678EC008595FF /* HMNavigationControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				AE4037451FCC1CEA003C59D0 /* BaseNavigationController.swift */,
+				AE40373F1FCC1B14003C59D0 /* ATNavigationController */,
 				AE99399B1FC678EC008595FF /* AppDelegate.swift */,
-				AE15B4AF1FC7C065008EF215 /* BaseNavigationController.swift */,
 				AE99399D1FC678EC008595FF /* ViewController.swift */,
+				AE4037111FCBFC46003C59D0 /* TabBarController.swift */,
 				AE15B4B11FC81B1A008EF215 /* TwoViewController.swift */,
 				AE99399F1FC678EC008595FF /* Main.storyboard */,
 				AE9939A21FC678EC008595FF /* Assets.xcassets */,
 				AE9939A41FC678EC008595FF /* LaunchScreen.storyboard */,
 				AE9939A71FC678EC008595FF /* Info.plist */,
+				AE4037441FCC1C30003C59D0 /* Header.h */,
 			);
 			path = HMNavigationControllerDemo;
 			sourceTree = "<group>";
@@ -102,7 +120,7 @@
 				TargetAttributes = {
 					AE9939971FC678EC008595FF = {
 						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -142,9 +160,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE4037421FCC1B14003C59D0 /* ATNavigationController.m in Sources */,
 				AE99399E1FC678EC008595FF /* ViewController.swift in Sources */,
+				AE4037461FCC1CEA003C59D0 /* BaseNavigationController.swift in Sources */,
 				AE99399C1FC678EC008595FF /* AppDelegate.swift in Sources */,
-				AE15B4B01FC7C065008EF215 /* BaseNavigationController.swift in Sources */,
+				AE4037121FCBFC46003C59D0 /* TabBarController.swift in Sources */,
 				AE15B4B21FC81B1A008EF215 /* TwoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,11 +302,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = UFNG52WUQ7;
 				INFOPLIST_FILE = HMNavigationControllerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.artron.HMNavigationControllerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "bf36172c-588f-4ce8-95c5-f9a007c667f3";
+				PROVISIONING_PROFILE_SPECIFIER = shenzhenInhouse_debug;
+				SWIFT_OBJC_BRIDGING_HEADER = HMNavigationControllerDemo/Header.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -296,11 +320,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = UFNG52WUQ7;
 				INFOPLIST_FILE = HMNavigationControllerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.artron.HMNavigationControllerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "bf36172c-588f-4ce8-95c5-f9a007c667f3";
+				PROVISIONING_PROFILE_SPECIFIER = shenzhenInhouse_debug;
+				SWIFT_OBJC_BRIDGING_HEADER = HMNavigationControllerDemo/Header.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
